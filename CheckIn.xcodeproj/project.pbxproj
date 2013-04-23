@@ -7,15 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CABD1CE172630640075AF2F /* CIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1CD172630640075AF2F /* CIOperation.m */; };
+		1CABD1D1172659F60075AF2F /* CIXiamiLoginOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D0172659F60075AF2F /* CIXiamiLoginOperation.m */; };
+		1CABD1D417265F5D0075AF2F /* CIXiamiRequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */; };
+		1CABD1D7172662C80075AF2F /* CIXiamiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D6172662C80075AF2F /* CIXiamiManager.m */; };
+		1CABD1DF17267A2C0075AF2F /* CIOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1DE17267A2C0075AF2F /* CIOperationQueue.m */; };
+		1CABD1E21726832A0075AF2F /* CIAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1E11726832A0075AF2F /* CIAccountManager.m */; };
+		1CABD1E8172684170075AF2F /* ISKeychainAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1E5172684170075AF2F /* ISKeychainAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CABD1E9172684170075AF2F /* ISKeychainAccessor+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1E7172684170075AF2F /* ISKeychainAccessor+Array.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1CABD1EF172686B10075AF2F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CABD1EE172686B10075AF2F /* Security.framework */; };
 		5FB32D1717258D4100F542E6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB32D1617258D4100F542E6 /* Cocoa.framework */; };
 		5FB32D2117258D4100F542E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FB32D1F17258D4100F542E6 /* InfoPlist.strings */; };
 		5FB32D2317258D4100F542E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB32D2217258D4100F542E6 /* main.m */; };
 		5FB32D2717258D4100F542E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB32D2517258D4100F542E6 /* Credits.rtf */; };
 		5FB32D2A17258D4100F542E6 /* CIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB32D2917258D4100F542E6 /* CIAppDelegate.m */; };
 		5FB32D2D17258D4100F542E6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB32D2B17258D4100F542E6 /* MainMenu.xib */; };
+		5FB32D3517258F2000F542E6 /* CIRequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB32D3417258F2000F542E6 /* CIRequestMaker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CABD1CC172630640075AF2F /* CIOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIOperation.h; sourceTree = "<group>"; };
+		1CABD1CD172630640075AF2F /* CIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIOperation.m; sourceTree = "<group>"; };
+		1CABD1CF172659F60075AF2F /* CIXiamiLoginOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiLoginOperation.h; sourceTree = "<group>"; };
+		1CABD1D0172659F60075AF2F /* CIXiamiLoginOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIXiamiLoginOperation.m; sourceTree = "<group>"; };
+		1CABD1D217265F5D0075AF2F /* CIXiamiRequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiRequestMaker.h; sourceTree = "<group>"; };
+		1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIXiamiRequestMaker.m; sourceTree = "<group>"; };
+		1CABD1D5172662C80075AF2F /* CIXiamiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiManager.h; sourceTree = "<group>"; };
+		1CABD1D6172662C80075AF2F /* CIXiamiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIXiamiManager.m; sourceTree = "<group>"; };
+		1CABD1DD17267A2C0075AF2F /* CIOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIOperationQueue.h; sourceTree = "<group>"; };
+		1CABD1DE17267A2C0075AF2F /* CIOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIOperationQueue.m; sourceTree = "<group>"; };
+		1CABD1E01726832A0075AF2F /* CIAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIAccountManager.h; sourceTree = "<group>"; };
+		1CABD1E11726832A0075AF2F /* CIAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIAccountManager.m; sourceTree = "<group>"; };
+		1CABD1E4172684170075AF2F /* ISKeychainAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISKeychainAccessor.h; sourceTree = "<group>"; };
+		1CABD1E5172684170075AF2F /* ISKeychainAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISKeychainAccessor.m; sourceTree = "<group>"; };
+		1CABD1E6172684170075AF2F /* ISKeychainAccessor+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ISKeychainAccessor+Array.h"; sourceTree = "<group>"; };
+		1CABD1E7172684170075AF2F /* ISKeychainAccessor+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ISKeychainAccessor+Array.m"; sourceTree = "<group>"; };
+		1CABD1EE172686B10075AF2F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5FB32D1317258D4000F542E6 /* CheckIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB32D1617258D4100F542E6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5FB32D1917258D4100F542E6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -29,6 +56,8 @@
 		5FB32D2817258D4100F542E6 /* CIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIAppDelegate.h; sourceTree = "<group>"; };
 		5FB32D2917258D4100F542E6 /* CIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CIAppDelegate.m; sourceTree = "<group>"; };
 		5FB32D2C17258D4100F542E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5FB32D3317258F2000F542E6 /* CIRequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIRequestMaker.h; sourceTree = "<group>"; };
+		5FB32D3417258F2000F542E6 /* CIRequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIRequestMaker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CABD1EF172686B10075AF2F /* Security.framework in Frameworks */,
 				5FB32D1717258D4100F542E6 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +73,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CABD1CA17262E3C0075AF2F /* Xiami */ = {
+			isa = PBXGroup;
+			children = (
+				1CABD1D217265F5D0075AF2F /* CIXiamiRequestMaker.h */,
+				1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */,
+				1CABD1CF172659F60075AF2F /* CIXiamiLoginOperation.h */,
+				1CABD1D0172659F60075AF2F /* CIXiamiLoginOperation.m */,
+				1CABD1D5172662C80075AF2F /* CIXiamiManager.h */,
+				1CABD1D6172662C80075AF2F /* CIXiamiManager.m */,
+			);
+			name = Xiami;
+			sourceTree = "<group>";
+		};
+		1CABD1CB17262E500075AF2F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1CABD1CC172630640075AF2F /* CIOperation.h */,
+				1CABD1CD172630640075AF2F /* CIOperation.m */,
+				5FB32D3317258F2000F542E6 /* CIRequestMaker.h */,
+				5FB32D3417258F2000F542E6 /* CIRequestMaker.m */,
+				1CABD1DD17267A2C0075AF2F /* CIOperationQueue.h */,
+				1CABD1DE17267A2C0075AF2F /* CIOperationQueue.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		1CABD1E3172683FB0075AF2F /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				1CABD1E4172684170075AF2F /* ISKeychainAccessor.h */,
+				1CABD1E5172684170075AF2F /* ISKeychainAccessor.m */,
+				1CABD1E6172684170075AF2F /* ISKeychainAccessor+Array.h */,
+				1CABD1E7172684170075AF2F /* ISKeychainAccessor+Array.m */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
 		5FB32D0A17258D4000F542E6 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +130,7 @@
 		5FB32D1517258D4000F542E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CABD1EE172686B10075AF2F /* Security.framework */,
 				5FB32D1617258D4100F542E6 /* Cocoa.framework */,
 				5FB32D1817258D4100F542E6 /* Other Frameworks */,
 			);
@@ -82,6 +150,11 @@
 		5FB32D1C17258D4100F542E6 /* CheckIn */ = {
 			isa = PBXGroup;
 			children = (
+				1CABD1E3172683FB0075AF2F /* Keychain */,
+				1CABD1E01726832A0075AF2F /* CIAccountManager.h */,
+				1CABD1E11726832A0075AF2F /* CIAccountManager.m */,
+				1CABD1CB17262E500075AF2F /* Base */,
+				1CABD1CA17262E3C0075AF2F /* Xiami */,
 				5FB32D2817258D4100F542E6 /* CIAppDelegate.h */,
 				5FB32D2917258D4100F542E6 /* CIAppDelegate.m */,
 				5FB32D2B17258D4100F542E6 /* MainMenu.xib */,
@@ -169,6 +242,15 @@
 			files = (
 				5FB32D2317258D4100F542E6 /* main.m in Sources */,
 				5FB32D2A17258D4100F542E6 /* CIAppDelegate.m in Sources */,
+				5FB32D3517258F2000F542E6 /* CIRequestMaker.m in Sources */,
+				1CABD1CE172630640075AF2F /* CIOperation.m in Sources */,
+				1CABD1D1172659F60075AF2F /* CIXiamiLoginOperation.m in Sources */,
+				1CABD1D417265F5D0075AF2F /* CIXiamiRequestMaker.m in Sources */,
+				1CABD1D7172662C80075AF2F /* CIXiamiManager.m in Sources */,
+				1CABD1DF17267A2C0075AF2F /* CIOperationQueue.m in Sources */,
+				1CABD1E21726832A0075AF2F /* CIAccountManager.m in Sources */,
+				1CABD1E8172684170075AF2F /* ISKeychainAccessor.m in Sources */,
+				1CABD1E9172684170075AF2F /* ISKeychainAccessor+Array.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +386,7 @@
 				5FB32D3217258D4100F542E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,5 +11,8 @@
 @interface CIAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+- (IBAction)loginXiami:(id)sender;
+- (IBAction)checkinXiami:(id)sender;
+- (IBAction)printCookies:(id)sender;
 
 @end
