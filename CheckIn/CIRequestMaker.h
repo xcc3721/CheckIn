@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @interface NSString (RequestMaker)
-
+- (NSString *)stringByCFAddingPercentEscapes;
 - (NSString *)messageLength;
 @end
 

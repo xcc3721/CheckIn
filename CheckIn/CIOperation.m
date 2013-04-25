@@ -37,7 +37,7 @@
 {
     while (!self.requestFinished)
     {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
     }
 }
 

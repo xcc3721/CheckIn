@@ -9,11 +9,21 @@
 #import "CIAppDelegate.h"
 #import "CIXiamiManager.h"
 
+@interface CIAppDelegate ()
+
+@property (nonatomic, retain) NSStatusItem *statusItem;
+
+@end
+
 @implementation CIAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [self.statusItem setTitle:@"hehe"];
+    [self.statusItem setHighlightMode:YES];
+    [self.statusItem setMenu:self.statusMenu];
 }
 
 - (IBAction)loginXiami:(id)sender
@@ -44,11 +54,14 @@
 //    
 //    NSString *dataString = [NSString stringWithUTF8String:[data bytes]];
 //    NSLog(@"%@", dataString);
+    [[CIXiamiManager defaultManager] checkin];
     
 }
 
 - (IBAction)printCookies:(id)sender
 {
-    [[CIXiamiManager defaultManager] xiamiCookie];
+//    [[CIXiamiManager defaultManager] xiamiCookie];
+    NSLog(@"%d", [[CIXiamiManager defaultManager] removeCookie]);
+
 }
 @end

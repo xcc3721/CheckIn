@@ -10,6 +10,7 @@
 
 @interface CIAppDelegate : NSObject <NSApplicationDelegate>
 
+@property (weak) IBOutlet NSMenu *statusMenu;
 @property (assign) IBOutlet NSWindow *window;
 - (IBAction)loginXiami:(id)sender;
 - (IBAction)checkinXiami:(id)sender;

@@ -13,7 +13,10 @@
 + (id)defaultManager;
 
 
-- (void)xiamiCookie;
+- (NSString *)memberAuthInCookie;
+- (BOOL)removeCookie;
+
 - (void)login;
+- (void)checkin;
 
 @end

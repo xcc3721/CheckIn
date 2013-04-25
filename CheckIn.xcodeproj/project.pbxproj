@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CAA0C1917276FF800D3D2E8 /* CIXiamiCheckinOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA0C1817276FF800D3D2E8 /* CIXiamiCheckinOperation.m */; };
 		1CABD1CE172630640075AF2F /* CIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1CD172630640075AF2F /* CIOperation.m */; };
 		1CABD1D1172659F60075AF2F /* CIXiamiLoginOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D0172659F60075AF2F /* CIXiamiLoginOperation.m */; };
 		1CABD1D417265F5D0075AF2F /* CIXiamiRequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CAA0C1717276FF800D3D2E8 /* CIXiamiCheckinOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiCheckinOperation.h; sourceTree = "<group>"; };
+		1CAA0C1817276FF800D3D2E8 /* CIXiamiCheckinOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIXiamiCheckinOperation.m; sourceTree = "<group>"; };
 		1CABD1CC172630640075AF2F /* CIOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIOperation.h; sourceTree = "<group>"; };
 		1CABD1CD172630640075AF2F /* CIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIOperation.m; sourceTree = "<group>"; };
 		1CABD1CF172659F60075AF2F /* CIXiamiLoginOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiLoginOperation.h; sourceTree = "<group>"; };
@@ -80,6 +83,8 @@
 				1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */,
 				1CABD1CF172659F60075AF2F /* CIXiamiLoginOperation.h */,
 				1CABD1D0172659F60075AF2F /* CIXiamiLoginOperation.m */,
+				1CAA0C1717276FF800D3D2E8 /* CIXiamiCheckinOperation.h */,
+				1CAA0C1817276FF800D3D2E8 /* CIXiamiCheckinOperation.m */,
 				1CABD1D5172662C80075AF2F /* CIXiamiManager.h */,
 				1CABD1D6172662C80075AF2F /* CIXiamiManager.m */,
 			);
@@ -251,6 +256,7 @@
 				1CABD1E21726832A0075AF2F /* CIAccountManager.m in Sources */,
 				1CABD1E8172684170075AF2F /* ISKeychainAccessor.m in Sources */,
 				1CABD1E9172684170075AF2F /* ISKeychainAccessor+Array.m in Sources */,
+				1CAA0C1917276FF800D3D2E8 /* CIXiamiCheckinOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

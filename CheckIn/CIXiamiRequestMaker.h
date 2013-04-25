@@ -12,7 +12,9 @@
 
 + (id)sharedInstance;
 
-- (NSURLRequest *) loginRequest;
-- (NSURLRequest *) checkinRequest;
+- (NSURLRequest *) sessionIdRequest;
+- (NSURLRequest *) loginRequest:(NSString *)cookie;
+- (NSURLRequest *) checkinRequest:(NSString *)cookie;
+- (NSURLRequest *) refreshXiamiRequest;
 
 @end

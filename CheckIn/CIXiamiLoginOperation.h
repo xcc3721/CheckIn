@@ -8,7 +8,7 @@
 
 #import "CIOperation.h"
 
-typedef void (^XiamiLoginSuccessHandler)(NSString *account);
+typedef void (^XiamiLoginSuccessHandler)(NSString *sessionCookieString);
 typedef void (^XiamiLoginFailedHandler)(NSError *error, NSString *account);
 
 @interface CIXiamiLoginOperation : CIOperation

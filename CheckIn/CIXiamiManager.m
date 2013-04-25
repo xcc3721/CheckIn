@@ -9,6 +9,13 @@
 #import "CIXiamiManager.h"
 #import "CIOperationQueue.h"
 #import "CIXiamiLoginOperation.h"
+#import "CIXiamiCheckinOperation.h"
+
+@interface CIXiamiManager ()
+
+@property (nonatomic, copy) NSString *sessionCookie;
+
+@end
 
 static CIXiamiManager *_defaultManager = nil;
 
@@ -37,14 +44,57 @@ static CIXiamiManager *_defaultManager = nil;
     }
 }
 
+- (NSString *)memberAuthInCookie
+{
+    NSString *memberAuth = nil;
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    for (NSHTTPCookie *cookie in cookies)
+    {
+        if ([[cookie name] isEqualToString:@"member_auth"] && [[cookie domain] isEqualToString:@".xiami.com"])
+        {
+            memberAuth = [NSString stringWithFormat:@"%@=%@", [cookie name], [cookie value]];
+            break;
+        }
+    }
+    return memberAuth;
+}
+
+- (BOOL)removeCookie
+{
+    BOOL result = NO;
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    for (NSHTTPCookie *cookie in cookies)
+    {
+        if ([[cookie domain] rangeOfString:@"xiami.com" options:NSCaseInsensitiveSearch].location != NSNotFound)
+        {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            result = YES;
+        }
+    }
+    return result;
+}
+
 - (void)login
 {
     CIXiamiLoginOperation *loginOperation = [[CIXiamiLoginOperation alloc] init];
-    [loginOperation setSuccessHandler:^ (NSString *account)
+    [loginOperation setSuccessHandler:^ (NSString *sessionCookie)
     {
-        NSLog(@"%@", account);
+        self.sessionCookie = sessionCookie;
     }];
     [[CIOperationQueue sharedQueue] addOperation:loginOperation];
+}
+
+- (void)checkin
+{
+    CIXiamiCheckinOperation *checkinOperation = [[CIXiamiCheckinOperation alloc] init];
+    NSMutableString *additionCookie = [NSMutableString stringWithString:self.sessionCookie];
+    if ([self memberAuthInCookie])
+    {
+        [additionCookie appendFormat:@"; %@", [self memberAuthInCookie]];
+    }
+    checkinOperation.additionCookie = additionCookie;
+    [[CIOperationQueue sharedQueue] addOperation:checkinOperation];
+    
 }
 
 @end
