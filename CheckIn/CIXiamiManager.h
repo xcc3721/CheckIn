@@ -18,5 +18,6 @@
 
 - (void)login;
 - (void)checkin;
+- (void)logout;
 
 @end

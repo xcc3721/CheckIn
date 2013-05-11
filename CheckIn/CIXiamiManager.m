@@ -48,14 +48,15 @@ static CIXiamiManager *_defaultManager = nil;
 {
     NSString *memberAuth = nil;
     NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    NSMutableArray *xiamiCookies = [NSMutableArray array];
     for (NSHTTPCookie *cookie in cookies)
     {
-        if ([[cookie name] isEqualToString:@"member_auth"] && [[cookie domain] isEqualToString:@".xiami.com"])
+        if ([[cookie domain] rangeOfString:@"xiami.com" options:NSCaseInsensitiveSearch].location != NSNotFound)
         {
-            memberAuth = [NSString stringWithFormat:@"%@=%@", [cookie name], [cookie value]];
-            break;
+            [xiamiCookies addObject:[NSString stringWithFormat:@"%@=%@", [cookie name], [cookie value]]];
         }
     }
+    memberAuth = [xiamiCookies componentsJoinedByString:@"; "];
     return memberAuth;
 }
 
@@ -94,6 +95,11 @@ static CIXiamiManager *_defaultManager = nil;
     }
     checkinOperation.additionCookie = additionCookie;
     [[CIOperationQueue sharedQueue] addOperation:checkinOperation];
+    
+}
+
+- (void)logout
+{
     
 }
 

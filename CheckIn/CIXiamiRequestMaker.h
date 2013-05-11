@@ -16,5 +16,6 @@
 - (NSURLRequest *) loginRequest:(NSString *)cookie;
 - (NSURLRequest *) checkinRequest:(NSString *)cookie;
 - (NSURLRequest *) refreshXiamiRequest;
+- (NSURLRequest *) logoutRequest:(NSString *)cookie;
 
 @end

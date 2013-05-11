@@ -58,7 +58,7 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     NSMutableURLRequest *urlRequest = [self mutableURLRequestByPost];
     [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/signin"]];
     [urlRequest setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-    [urlRequest addValue:[cookie stringByAppendingString:@";t_sign_auth=1; __utma=251084815.1421577405.1366771482.1366771482.1366771482.1; __utmb=251084815.1.10.1366771482; __utmc=251084815; __utmz=251084815.1366771482.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"] forHTTPHeaderField:@"Cookie"];
+    [urlRequest addValue:[cookie stringByAppendingString:@"; __utma=251084815.1421577405.1366771482.1366771482.1366771482.1; __utmb=251084815.1.10.1366771482; __utmc=251084815; __utmz=251084815.1366771482.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"] forHTTPHeaderField:@"Cookie"];
     return urlRequest;
 }
 
@@ -87,4 +87,23 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     return urlRequest;
 }
 
+
+- (NSURLRequest *)logoutRequest:(NSString *)cookie
+{
+    NSMutableURLRequest *urlRequest = [self mutableURLRequestByGet];
+    [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/member/logout"]];
+    [urlRequest setValue:cookie forHTTPHeaderField:@"Cookie"];
+    NSDictionary *header = @{
+                             @"Referer": @"http://www.xiami.com/",
+                             @"Accept-Encoding": @"gzip,deflate,sdch",
+                             @"Accept-Language": @"zh-CN,zh;q=0.8",
+                             @"Accept-Charset": @"GBK,utf-8;q=0.7,*;q=0.3",
+                             @"Host": @"www.xiami.com",
+                             @"Connection": @"keep-alive",
+                             @"Cache-Control": @"max-age=0",
+                             @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                             };
+    [urlRequest addHTTPHeaderFields:header];
+    return urlRequest;
+}
 @end
