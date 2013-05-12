@@ -7,6 +7,7 @@
 //
 
 #import "CIRequestMaker.h"
+NSString * const CIUserAgentString = @"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.58 Safari/537.22";
 
 @implementation NSString (RequestMaker)
 
@@ -52,7 +53,7 @@
 - (NSMutableURLRequest *)mutableURLRequestByGet
 {    __autoreleasing NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    [request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17" forHTTPHeaderField:@"User-Agent"];
+    [request addValue:CIUserAgentString forHTTPHeaderField:@"User-Agent"];
     return request;
 }
 
@@ -60,7 +61,7 @@
 {
     __autoreleasing NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
-    [request addValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.57 Safari/537.17" forHTTPHeaderField:@"User-Agent"];
+    [request addValue:CIUserAgentString forHTTPHeaderField:@"User-Agent"];
     return request;
 }
 

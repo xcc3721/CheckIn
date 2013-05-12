@@ -12,10 +12,12 @@
 
 + (id)sharedInstance;
 
-- (NSURLRequest *) sessionIdRequest;
-- (NSURLRequest *) loginRequest:(NSString *)cookie;
-- (NSURLRequest *) checkinRequest:(NSString *)cookie;
+- (NSURLRequest *) loginRequest;
 - (NSURLRequest *) refreshXiamiRequest;
-- (NSURLRequest *) logoutRequest:(NSString *)cookie;
+- (NSURLRequest *) logoutRequest;
+
+- (NSURLRequest *) signinRequest;
+- (NSArray *) dailyPointRequests;
+
 
 @end

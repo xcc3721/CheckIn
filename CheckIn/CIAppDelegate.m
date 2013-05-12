@@ -7,7 +7,8 @@
 //
 
 #import "CIAppDelegate.h"
-#import "CIXiamiManager.h"
+#import "CIXiamiRequestMaker.h"
+#import "NSArray+AFNetwork.h"
 
 @interface CIAppDelegate ()
 
@@ -19,49 +20,81 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [self.statusItem setTitle:@"hehe"];
-    [self.statusItem setHighlightMode:YES];
-    [self.statusItem setMenu:self.statusMenu];
+//    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+//    [self.statusItem setTitle:@"hehe"];
+//    [self.statusItem setHighlightMode:YES];
+//    [self.statusItem setMenu:self.statusMenu];
 }
 
 - (IBAction)loginXiami:(id)sender
 {
-//    CIRequestMaker *maker = [[CIRequestMaker alloc] init];
-//    NSURLRequest *request = [maker xiamiLoginRequest];
-//    NSError *error = nil;
-//    NSHTTPURLResponse *response = nil;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//    NSLog(@"%@", response);
-//    NSLog(@"%@", error);
-//    
-//    NSString *dataString = [NSString stringWithUTF8String:[data bytes]];
-//    NSLog(@"%@", dataString);
-    [[CIXiamiManager defaultManager] login];
+    NSURLRequest *request = [[CIXiamiRequestMaker sharedInstance] loginRequest];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         [self refreshXiami];
+         
+         
+     }
+                                     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"%@", error);
+     }];
     
+    [operation start];
+}
+
+- (void) refreshXiami
+{
+    AFHTTPRequestOperation *refreshOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[[CIXiamiRequestMaker sharedInstance] refreshXiamiRequest]];
+    [refreshOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"%@", responseObject);
+         
+         
+         
+         [self dailyPoint];
+         
+     }
+                                            failure:nil];
+    [refreshOperation start];
+    
+}
+
+- (void) dailyPoint
+{
+    NSArray *request = [[CIXiamiRequestMaker sharedInstance] dailyPointRequests];
+    [request startOperationsWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         [self signInXiami];
+     }
+                                failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         
+     }];
+}
+
+- (void) signInXiami
+{
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[[CIXiamiRequestMaker sharedInstance] signinRequest]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSData *data = responseObject;
+         NSString *string = [NSString stringWithUTF8String:data.bytes];
+         NSLog(@"%@", string);
+         
+     }
+                                     failure:nil];
+    [operation start];
 }
 
 - (IBAction)checkinXiami:(id)sender
 {
-//    CIRequestMaker *maker = [[CIRequestMaker alloc] init];
-//    NSURLRequest *request = [maker xiamiSigninRequest];
-//    NSError *error = nil;
-//    NSHTTPURLResponse *response = nil;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-//    NSLog(@"%@", response);
-//    NSLog(@"%@", error);
-//    
-//    NSString *dataString = [NSString stringWithUTF8String:[data bytes]];
-//    NSLog(@"%@", dataString);
-    [[CIXiamiManager defaultManager] checkin];
     
 }
 
 - (IBAction)printCookies:(id)sender
 {
-//    [[CIXiamiManager defaultManager] xiamiCookie];
-    NSLog(@"%d", [[CIXiamiManager defaultManager] removeCookie]);
-
+    
 }
 @end

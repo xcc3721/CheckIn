@@ -23,7 +23,7 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     return _sharedInstance;
 }
 
-- (NSURLRequest *)loginRequest:(NSString *)cookie
+- (NSURLRequest *)loginRequest
 {
     NSMutableURLRequest *urlRequest = [self mutableURLRequestByPost];
     [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/member/login"]];
@@ -34,40 +34,16 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     NSString *suffixPart = @"&submit=%E7%99%BB+%E5%BD%95&autologin=1";
     NSArray *contentArray = @[prefixPart, usernamePart, passwordPart, suffixPart];
     NSString *content = [contentArray componentsJoinedByString:@""];
-    [urlRequest addValue:[cookie stringByAppendingString:@"; __utma=251084815.1421577405.1366771482.1366771482.1366771482.1; __utmb=251084815.1.10.1366771482; __utmc=251084815; __utmz=251084815.1366771482.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"] forHTTPHeaderField:@"Cookie"];
     
     [urlRequest setupMessageBody:content];
     NSDictionary *httpHeader = @{
-                                 @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                                 @"Accept-Charset":@"GBK,utf-8;q=0.7,*;q=0.3",
-                                 @"Accept-Encoding":@"gzip,deflate,sdch",
-                                 @"Accept-Language":@"zh-CN,zh;q=0.8",
-                                 @"Cache-Control":@"max-age=0",
-                                 @"Connection":@"keep-alive",
-                                 @"Content-Type":@"application/x-www-form-urlencoded",
-                                 @"Host":@"www.xiami.com",
-                                 @"Origin":@"http://www.xiami.com",
-                                 @"Referer":@"http://www.xiami.com/",
+                                 @"X-Requested-With": @"XMLHttpRequest",
+                                 @"Host":@"www.xiami.com"
                                  };
     [urlRequest addHTTPHeaderFields:httpHeader];
     return urlRequest;
 }
 
-- (NSURLRequest *)checkinRequest:(NSString *)cookie
-{
-    NSMutableURLRequest *urlRequest = [self mutableURLRequestByPost];
-    [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/signin"]];
-    [urlRequest setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
-    [urlRequest addValue:[cookie stringByAppendingString:@"; __utma=251084815.1421577405.1366771482.1366771482.1366771482.1; __utmb=251084815.1.10.1366771482; __utmc=251084815; __utmz=251084815.1366771482.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"] forHTTPHeaderField:@"Cookie"];
-    return urlRequest;
-}
-
-- (NSURLRequest *)sessionIdRequest
-{
-    NSMutableURLRequest *urlRequest = [self mutableURLRequestByGet];
-    [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/coop/checkcode"]];
-    return urlRequest;
-}
 
 - (NSURLRequest *)refreshXiamiRequest
 {
@@ -75,35 +51,62 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com"]];
     NSDictionary *header = @{
                              @"Referer": @"http://www.xiami.com/",
-                             @"Accept-Encoding": @"gzip,deflate,sdch",
-                             @"Accept-Language": @"zh-CN,zh;q=0.8",
-                             @"Accept-Charset": @"GBK,utf-8;q=0.7,*;q=0.3",
-                             @"Host": @"www.xiami.com",
-                             @"Connection": @"keep-alive",
-                             @"Cache-Control": @"max-age=0",
-                             @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                             @"Host":@"www.xiami.com"
                              };
     [urlRequest addHTTPHeaderFields:header];
     return urlRequest;
 }
 
+- (NSURLRequest *)signinRequest
+{
+    NSMutableURLRequest *urlRequest = [self mutableURLRequestByPost];
+    [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/signin"]];
+    [urlRequest addValue:@"http://www.xiami.com/" forHTTPHeaderField:@"Referer"];
+    return urlRequest;
+}
 
-- (NSURLRequest *)logoutRequest:(NSString *)cookie
+- (NSURLRequest *)logoutRequest
 {
     NSMutableURLRequest *urlRequest = [self mutableURLRequestByGet];
     [urlRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/member/logout"]];
-    [urlRequest setValue:cookie forHTTPHeaderField:@"Cookie"];
     NSDictionary *header = @{
                              @"Referer": @"http://www.xiami.com/",
-                             @"Accept-Encoding": @"gzip,deflate,sdch",
-                             @"Accept-Language": @"zh-CN,zh;q=0.8",
-                             @"Accept-Charset": @"GBK,utf-8;q=0.7,*;q=0.3",
-                             @"Host": @"www.xiami.com",
-                             @"Connection": @"keep-alive",
-                             @"Cache-Control": @"max-age=0",
-                             @"Accept": @"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                             @"Host":@"www.xiami.com"
                              };
     [urlRequest addHTTPHeaderFields:header];
     return urlRequest;
 }
+
+- (NSArray *)dailyPointRequests
+{
+    NSMutableURLRequest *taskRequest = [self mutableURLRequestByGet];
+    [taskRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/fetch-task?type=25&id=0"]];
+    
+    NSMutableURLRequest *allSongRequest = [self mutableURLRequestByGet];
+    [allSongRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/statclick/req/AllSongListPlay"]];
+    NSDictionary *header = @{
+                             @"Referer": @"http://www.xiami.com/?task",
+                             @"Host":@"www.xiami.com"
+                             };
+    [allSongRequest addHTTPHeaderFields:header];
+    
+    NSMutableURLRequest *playListRequest = [self mutableURLRequestByGet];
+    [playListRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/song/playlist/id/1/type/9"]];
+    NSDictionary *listHeader = @{
+                             @"Referer": @"http://www.xiami.com/song/play?ids=/song/playlist-default",
+                             @"Host":@"www.xiami.com"
+                             };
+    [playListRequest addHTTPHeaderFields:listHeader];
+    
+    NSMutableURLRequest *pointRequest = [self mutableURLRequestByGet];
+    [pointRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/gain/type/25/id/0"]];
+    NSDictionary *pointHeader = @{
+                                 @"Referer": @"http://www.xiami.com/song/play?ids=/song/playlist-default",
+                                 @"Host":@"www.xiami.com"
+                                 };
+    [pointRequest addHTTPHeaderFields:pointHeader];
+    
+    return @[taskRequest, allSongRequest, playListRequest, pointRequest];
+}
+
 @end
