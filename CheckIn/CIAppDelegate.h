@@ -12,8 +12,15 @@
 
 @property (weak) IBOutlet NSMenu *statusMenu;
 @property (assign) IBOutlet NSWindow *window;
+@property (unsafe_unretained) IBOutlet NSWindow *settingWindow;
+
+@property (weak) IBOutlet NSTextField *xiamiUsernameField;
+@property (weak) IBOutlet NSSecureTextField *xiamiPasswordField;
+
+
 - (IBAction)loginXiami:(id)sender;
-- (IBAction)checkinXiami:(id)sender;
-- (IBAction)printCookies:(id)sender;
+- (IBAction)setting:(id)sender;
+- (IBAction)closeSetting:(id)sender;
+- (IBAction)logout:(id)sender;
 
 @end

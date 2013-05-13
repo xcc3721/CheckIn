@@ -12,7 +12,10 @@
 
 + (id) defaultManager;
 
-- (NSString *)xiamiUsername;
-- (NSString *)xiamiPassword;
+//- (NSString *)xiamiUsername;
+//- (NSString *)xiamiPassword;
+
+@property (nonatomic, copy) NSString *xiamiUsername;
+@property (nonatomic, copy) NSString *xiamiPassword;
 
 @end

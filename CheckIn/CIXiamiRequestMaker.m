@@ -81,6 +81,11 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
 {
     NSMutableURLRequest *taskRequest = [self mutableURLRequestByGet];
     [taskRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/task/fetch-task?type=25&id=0"]];
+    NSDictionary *taskHeader = @{
+                             @"Referer": @"http://www.xiami.com/task/all",
+                             @"Host":@"www.xiami.com"
+                             };
+    [taskRequest addHTTPHeaderFields:taskHeader];
     
     NSMutableURLRequest *allSongRequest = [self mutableURLRequestByGet];
     [allSongRequest setURL:[NSURL URLWithString:@"http://www.xiami.com/statclick/req/AllSongListPlay"]];

@@ -9,6 +9,7 @@
 #import "CIAppDelegate.h"
 #import "CIXiamiRequestMaker.h"
 #import "NSArray+AFNetwork.h"
+#import "CIAccountManager.h"
 
 @interface CIAppDelegate ()
 
@@ -20,10 +21,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-//    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-//    [self.statusItem setTitle:@"hehe"];
-//    [self.statusItem setHighlightMode:YES];
-//    [self.statusItem setMenu:self.statusMenu];
+    //    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    //    [self.statusItem setTitle:@"hehe"];
+    //    [self.statusItem setHighlightMode:YES];
+    //    [self.statusItem setMenu:self.statusMenu];
 }
 
 - (IBAction)loginXiami:(id)sender
@@ -81,20 +82,38 @@
      {
          NSData *data = responseObject;
          NSString *string = [NSString stringWithUTF8String:data.bytes];
-         NSLog(@"%@", string);
+         NSAlert *alert = [NSAlert alertWithMessageText:@"Sign In" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"%@ day signin", string];
+         [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
          
      }
                                      failure:nil];
     [operation start];
 }
 
-- (IBAction)checkinXiami:(id)sender
+- (IBAction)setting:(id)sender
 {
-    
+    [self.xiamiPasswordField setStringValue:[[CIAccountManager defaultManager] xiamiPassword]];
+    [self.xiamiUsernameField setStringValue:[[CIAccountManager defaultManager] xiamiUsername]];
+    [self.settingWindow makeKeyAndOrderFront:nil];
 }
 
-- (IBAction)printCookies:(id)sender
+- (IBAction)closeSetting:(id)sender
 {
-    
+    [self.settingWindow close];
+    [[CIAccountManager defaultManager] setXiamiUsername:self.xiamiUsernameField.stringValue];
+    [[CIAccountManager defaultManager] setXiamiPassword:self.xiamiPasswordField.stringValue];
+}
+
+- (IBAction)logout:(id)sender
+{
+    [@[[[CIXiamiRequestMaker sharedInstance] logoutRequest]] startOperationsWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSLog(@"Logged out");
+    }
+                                                                                failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"%@", error);
+     }];
 }
 @end
