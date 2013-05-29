@@ -9,6 +9,12 @@
 #import "CIAccountManager.h"
 #import "ISKeychainAccessor.h"
 
+@interface CIAccountManager ()
+
+@property (atomic, assign) NSInteger idCounter;
+
+@end
+
 static CIAccountManager *_defaultManager = nil;
 
 NSString * const KeychainServiceKey = @"com.autosignin.service";
@@ -27,9 +33,18 @@ NSString * const XiamiUsernameKey = @"XiamiUsernameKey";
     return _defaultManager;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _idCounter = 0;
+    }
+    return self;
+}
+
 - (NSString *)xiamiPassword
 {
-//    return @"6289794";
     ISKeychainAccessor *acc = [[ISKeychainAccessor alloc] initWithServiceName:KeychainServiceKey];
     NSString *result = [acc valueForName:XiamiPasswordKey error:nil];
     if (result == nil)
@@ -80,6 +95,21 @@ NSString * const XiamiUsernameKey = @"XiamiUsernameKey";
     }
     
     [self didChangeValueForKey:@"xiamiUsername"];
+}
+
+- (void) setXiamiUid:(NSString *)xiamiUid
+{
+    
+}
+
+- (NSString *)xiamiUid
+{
+    return [NSString stringWithFormat:@"%ld", self.idCounter];
+}
+
+- (void)increaseUid
+{
+    self.idCounter += 1;
 }
 
 @end

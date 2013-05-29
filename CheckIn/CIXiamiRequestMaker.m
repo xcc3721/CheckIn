@@ -114,4 +114,18 @@ static CIXiamiRequestMaker *_sharedInstance = nil;
     return @[taskRequest, allSongRequest, playListRequest, pointRequest];
 }
 
+- (NSURLRequest *)likePageRequest:(NSString *)uid
+{
+    NSMutableURLRequest *request = [self mutableURLRequestByGet];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.xiami.com/space/lib-song/u/%@", uid]]];
+    return request;
+}
+
+- (NSURLRequest *)likesRequest:(NSString *)uid page:(NSInteger)page
+{
+    NSMutableURLRequest *request = [self mutableURLRequestByGet];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.xiami.com/space/lib-song/u/%@/page/%ld", uid, page]]];
+    return request;
+}
+
 @end

@@ -16,11 +16,13 @@
 
 @property (weak) IBOutlet NSTextField *xiamiUsernameField;
 @property (weak) IBOutlet NSSecureTextField *xiamiPasswordField;
+@property (weak) IBOutlet NSTextField *progressLabel;
 
 
 - (IBAction)loginXiami:(id)sender;
 - (IBAction)setting:(id)sender;
 - (IBAction)closeSetting:(id)sender;
 - (IBAction)logout:(id)sender;
+- (IBAction)likeSongs:(id)sender;
 
 @end

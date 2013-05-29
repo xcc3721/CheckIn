@@ -17,5 +17,9 @@
 
 @property (nonatomic, copy) NSString *xiamiUsername;
 @property (nonatomic, copy) NSString *xiamiPassword;
+@property (nonatomic, copy) NSString *xiamiUid;
+
+
+- (void)increaseUid;
 
 @end

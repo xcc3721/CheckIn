@@ -47,11 +47,19 @@
         AFHTTPRequestOperation *nextOp = [self operationWithIndex:index+1 WithSuccess:success failure:failure];
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
+            if (success)
+            {
+                success(operation, responseObject);
+            }
             [nextOp start];
         }
                                   failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
             NSLog(@"%@ failed with error:[%@]", operation, error);
+            if (failure)
+            {
+                failure(operation, error);
+            }
             [nextOp start];
         }];
         return op;

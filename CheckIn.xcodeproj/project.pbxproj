@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C5519A717559E85009FFCA3 /* NSString+Xiami.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5519A617559E85009FFCA3 /* NSString+Xiami.m */; };
+		1C5519AB1755D442009FFCA3 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5519AA1755D442009FFCA3 /* CHCSVParser.m */; };
 		1CABD1D417265F5D0075AF2F /* CIXiamiRequestMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */; };
 		1CABD1E21726832A0075AF2F /* CIAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1E11726832A0075AF2F /* CIAccountManager.m */; };
 		1CABD1E8172684170075AF2F /* ISKeychainAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CABD1E5172684170075AF2F /* ISKeychainAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -33,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C5519A517559E85009FFCA3 /* NSString+Xiami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Xiami.h"; sourceTree = "<group>"; };
+		1C5519A617559E85009FFCA3 /* NSString+Xiami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Xiami.m"; sourceTree = "<group>"; };
+		1C5519A91755D442009FFCA3 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
+		1C5519AA1755D442009FFCA3 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		1CABD1D217265F5D0075AF2F /* CIXiamiRequestMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIXiamiRequestMaker.h; sourceTree = "<group>"; };
 		1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIXiamiRequestMaker.m; sourceTree = "<group>"; };
 		1CABD1E01726832A0075AF2F /* CIAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIAccountManager.h; sourceTree = "<group>"; };
@@ -95,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C5519A81755D435009FFCA3 /* CHCSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				1C5519A91755D442009FFCA3 /* CHCSVParser.h */,
+				1C5519AA1755D442009FFCA3 /* CHCSVParser.m */,
+			);
+			name = CHCSVParser;
+			sourceTree = "<group>";
+		};
 		1CABD1CA17262E3C0075AF2F /* Xiami */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +117,8 @@
 				1CABD1D317265F5D0075AF2F /* CIXiamiRequestMaker.m */,
 				5F0FC8D7173FE643000CDB67 /* NSArray+AFNetwork.h */,
 				5F0FC8D8173FE643000CDB67 /* NSArray+AFNetwork.m */,
+				1C5519A517559E85009FFCA3 /* NSString+Xiami.h */,
+				1C5519A617559E85009FFCA3 /* NSString+Xiami.m */,
 			);
 			name = Xiami;
 			sourceTree = "<group>";
@@ -193,6 +210,7 @@
 		5FB32D1C17258D4100F542E6 /* CheckIn */ = {
 			isa = PBXGroup;
 			children = (
+				1C5519A81755D435009FFCA3 /* CHCSVParser */,
 				5F4741FD173E6D15003BD40A /* AFNetworking */,
 				1CABD1E3172683FB0075AF2F /* Keychain */,
 				1CABD1E01726832A0075AF2F /* CIAccountManager.h */,
@@ -301,6 +319,8 @@
 				5F474219173E6D15003BD40A /* UIImageView+AFNetworking.m in Sources */,
 				5F47421E173E6D9A003BD40A /* CIRequestMaker.m in Sources */,
 				5F0FC8D9173FE644000CDB67 /* NSArray+AFNetwork.m in Sources */,
+				1C5519A717559E85009FFCA3 /* NSString+Xiami.m in Sources */,
+				1C5519AB1755D442009FFCA3 /* CHCSVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

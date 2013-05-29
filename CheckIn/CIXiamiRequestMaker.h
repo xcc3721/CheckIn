@@ -12,12 +12,14 @@
 
 + (id)sharedInstance;
 
-- (NSURLRequest *) loginRequest;
-- (NSURLRequest *) refreshXiamiRequest;
-- (NSURLRequest *) logoutRequest;
+- (NSURLRequest *)loginRequest;
+- (NSURLRequest *)refreshXiamiRequest;
+- (NSURLRequest *)logoutRequest;
 
-- (NSURLRequest *) signinRequest;
-- (NSArray *) dailyPointRequests;
+- (NSURLRequest *)signinRequest;
+- (NSArray *)dailyPointRequests;
 
+- (NSURLRequest *)likesRequest:(NSString *)uid page:(NSInteger)page;
+- (NSURLRequest *)likePageRequest:(NSString *)uid;
 
 @end
